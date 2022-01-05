@@ -21,7 +21,7 @@ Local Run:
 ```
 ## Running the tests
 ```
-Using JUnit Test
+Using JUnit Test run command "mvn test"
 ```
 
 ## API Documentation
