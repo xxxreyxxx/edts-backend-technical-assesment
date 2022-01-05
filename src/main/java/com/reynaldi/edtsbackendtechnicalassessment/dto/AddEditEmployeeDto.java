@@ -1,6 +1,7 @@
 package com.reynaldi.edtsbackendtechnicalassessment.dto;
 
 import com.reynaldi.edtsbackendtechnicalassessment.constant.GradeEnum;
+import com.reynaldi.edtsbackendtechnicalassessment.validator.constraint.EnumSubSet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,5 +29,6 @@ public class AddEditEmployeeDto {
     @NotNull(message = "salary must not be null")
     private BigDecimal salary;
 
+    @EnumSubSet(anyOf = {GradeEnum.MANAGER, GradeEnum.STAFF, GradeEnum.SUPERVISOR})
     private GradeEnum grade;
 }

@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     private long employeeId;
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -47,8 +48,8 @@ public class EmployeeService {
 
         List<EmployeeDataWithBonusDto> employeeDataWithBonusDtos = new ArrayList<>();
         employees.forEach(employee -> {
-            BigDecimal salary = employee.getSalary();
-            BigDecimal bonus = salary.multiply(new BigDecimal(employee.getGrade().getPercentage())).divide(BigDecimal.valueOf(100));
+            BigDecimal salary = employee.getSalary().setScale(0, RoundingMode.HALF_EVEN);
+            BigDecimal bonus = salary.multiply(new BigDecimal(employee.getGrade().getPercentage())).divide(BigDecimal.valueOf(100).setScale(0, RoundingMode.HALF_EVEN));
             BigDecimal totalBonus = salary.add(bonus);
             EmployeeDataWithBonusDto employeeDataWithBonusDto = EmployeeDataWithBonusDto.builder()
                     .employeeId(employee.getEmployeeId())
